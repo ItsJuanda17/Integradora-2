@@ -2,12 +2,15 @@ package model;
 
 import java.util.Calendar;
 
-public class Proyecto {
+public class Project {
     // Atributos
-    private String proyectName;
-    private String clientName;
-    private String clientPhone;
+    private String projectName;
     private Manager manager;
+    private Manager clientManager;
+    private String clientManagerName;
+    private String clientManagerPhone;
+    private String managerName;
+    private String managerCellPhone;
     private double budget;
     private Calendar startDate;
     private Calendar endDate;
@@ -17,13 +20,15 @@ public class Proyecto {
     private int counterStage = 0;
 
     // Constructores
-    public Proyecto(String proyectName, String clientName, String clientPhone, double budget, String managerName, String managerPhone) {
-        this.proyectName = proyectName;
-        this.clientName = clientName;
-        this.clientPhone = clientPhone;
+    public Project(String projectName, Calendar startDateProyect , Calendar endDateProyect , double budget , String clientManagerName , String clientManagerPhone, String managerName, String managerCellPhone ) {
+        this.projectName = projectName;
+        this.startDateProyect = startDateProyect;
+        this.endDateProyect = endDateProyect:
         this.budget = budget;
-
-    manager = new Manager(managerName, managerPhone);
+        manager = new Manager(managerName, managerCellPhone);
+        clientManager= new Manager(clientManagerName, clientManagerPhone);
+    
+    
     stages = new Stage[SIZE_STAGES];
     for (int i = 0; i < SIZE_STAGES; i++) {
         switch (i) {
@@ -53,21 +58,33 @@ public class Proyecto {
 
     }
 
+    public void addManagers( String clientManagerName , String clientManagerPhone, String managerName, String managerCellPhone  ){
+
+        clientManager.setName(clientManagerName);
+        clientManager.setCellphone(clientManagerPhone);
+        manager.setName(managerName);
+        manager.setCellphone(managerCellPhone);
+    }
+
     // Métodos getters
-    public String getProyectName() {
-        return proyectName;
+    public String getProjectName() {
+        return projectName;
     }
 
-    public String getClientName() {
-        return clientName;
+    public String getClientManagerName() {
+        return clientManagerName;
     }
 
-    public String getClientPhone() {
-        return clientPhone;
+    public String getClientManagerPhone() {
+        return clientManagerPhone;
     }
 
-    public Manager getManager() {
-        return manager;
+    public Manager getManagerName() {
+        return managerName;
+    }
+
+    public Manager getManagerCellPhone(){
+        return managerCellPhone;
     }
 
     public double getBudget() {
@@ -83,7 +100,7 @@ public class Proyecto {
     }
 
     public Stage[] getStages() {
-        return stages;
+        return stages[stage];
     }
 
     public Stage getCurrentStage() {
@@ -116,4 +133,48 @@ public class Proyecto {
             return false;
         }
     }
+
+    public int getStageMonths(int i ){
+        return stageMonths[i];
+    }
+
+    public void setStageMonths(int[] stageMonths ){
+        this.stageMonths= stageMonths;
+    }
+
+    public void setNameProject(String nameProject){
+        this.projectName = projectName;
+    }
+
+     public void setBudget(double budget) {
+        this.budget = budget;
+    }
+
+    public Manager getManager(){
+        return manager;
+    }
+
+    public Manager getClientManager(){
+        return clientManager;
+    }
+
+    public void setManagerName(String managerName){
+        this.managerName= managerName;
+    }
+
+    public void setManagerCellphone (String managerCellPhone){
+        this.managerCellPhone = managerCellPhone;
+    }
+
+    public void setClientManagerName(String clientManagerName){
+        this.clientManagerName= clientManagerName;
+    }
+
+    public void setClientManagerPhone(String clientManagerPhone){
+        this.clientManagerPhone = clientManagerPhone;
+    }
+   
 }
+
+
+    

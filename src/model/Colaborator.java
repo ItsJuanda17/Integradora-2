@@ -4,7 +4,7 @@ public class Colaborator{
     private String collaboratorStatus;
     private String collaboratorName;
  
-}
+
 
 public Colaborator (String collaboratorStatus , String collaboratorName){
     this.collaboratorStatus=collaboratorStatus;
@@ -27,3 +27,4 @@ public void setCollaboratorName(String collaboratorName){
     this.setCollaboratorName=collaboratorName;
 }
 
+}

@@ -15,11 +15,35 @@ public class Stage{
 
     public Stage(Calendar plannedStartDate , Calendar plannedEndDate){
 
-        this.plannedStartDateStage= plannedStartDateStage;
-        this.plannedEndDateStage=plannedEndDateStage;
-        this.isActive=false;
-        this.capsules= new Capsule[SIZE_CAPSULE];
+        this.plannedStartDate= plannedStartDate;
+        this.plannedEndDate=plannedEndDate;
+        isActive=false;
+        capsules = new Capsule[SIZE_CAPSULE];
+        initCapsule();
 
+
+    }
+
+    public void initCapsule() {
+  
+    
+    for (int i = 0; i < SIZE_CAPSULE; i++) {
+        capsules[i] = new Capsule(null, -1, "", null, null);
+      }
+    }
+
+    public void addCapsule(String situationDescription, int capsuleType, String authorName, String authorPosition, String lessonLearned){
+    Capsule newCapsule = new Capsule(situationDescription, capsuleType, authorName, authorPosition, lessonLearned);
+    newCapsule.extractLessonHashtags(lessonLearned);
+    newCapsule.obteinHashtagsSituation(situationDescription);
+    newCapsule.setSituationDescription(situationDescription);
+    newCapsule.setCapsuleType(capsuleType);
+    newCapsule.setAuthorPosition(authorPosition);
+    newCapsule.setAuthorName(authorName);
+    newCapsule.setLessonLearned(lessonLearned);
+    
+    capsules[counterCapsule] = newCapsule;
+    counterCapsule++;
 
     }
 

@@ -1,32 +1,34 @@
 package model;
 
 public class Manager {
-    private String managerName;
+    private String name;
 
-    private String managerCellPhone;
-}
+    private String cellPhone;
 
-public Manager (String managerName , String managerCellphone){
 
-    this.managerName=name;
-    this.managerCellPhone=cellPhone;
+public Manager (String name , String cellphone){
 
-}
-
-public String getManagerName(){
-    return managerName;
-}
-
-public String setManagerName(String managerName){
-
-    this.managerName = managerName;
+    this.name=name;
+    this.cellPhone=cellPhone;
 
 }
 
-public String getManagerCellphone(){
-    return managerCellPhone;
+public String getName(){
+    return name;
 }
 
-public String setManagerCellphone(String cellPhone){
-    this.managerCellphone = managerCellPhone;
+public String setName(String name){
+
+    this.name = name;
+
+}
+
+public String getCellphone(){
+    return cellPhone;
+}
+
+public String setCellphone(String cellPhone){
+    this.cellphone = cellPhone;
+}
+
 }

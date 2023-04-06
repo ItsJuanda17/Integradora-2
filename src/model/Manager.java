@@ -13,8 +13,8 @@ public class Manager {
 /**
  * Constructs a Manager object with the given name and cellphone number.
  *
- * @param name the name of the manager
- * @param cellphone the cellphone number of the manager
+ * @param managerName the name of the manager
+ * @param managerCellphone the cellphone number of the manager
  */
 public Manager (String managerName , String managerCellPhone){
 
@@ -37,7 +37,7 @@ public String getManagerName(){
 /**
  * Sets the name of the manager.
  *
- * @param name the new name of the manager
+ * @param managerName the new name of the manager
  */
 
 public void setManagerName(String managerName){
@@ -60,7 +60,7 @@ public String getManagerCellphone(){
 /**
  * Sets the cellphone number of the manager.
  *
- * @param cellphone the new cellphone number of the manager
+ * @param managerCellphone the new cellphone number of the manager
  */
 
 public void setManagerCellphone(String managerCellPhone){

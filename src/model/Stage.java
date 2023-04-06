@@ -95,8 +95,8 @@ public class Stage{
  *
  * @return the array of capsules
  */
-    public Capsule[] getCapsules(){
-        return capsules;
+    public Capsule getCapsules(int capsule){
+        return capsules [capsule];
     }
 
 /**
@@ -134,10 +134,26 @@ public class Stage{
         return realEndDate;
     }
 
+    public int getCounterCapsule(){
+        return counterCapsule -1;
+
+
+    }
+/**
+ * Sets the planned start date of the project.
+ *
+ * @param plannedStartDate a {@code Calendar} object representing the planned start date of the project
+ */
     public void setPlannedStartDate(Calendar plannedStartDate) {
         this.plannedStartDate = plannedStartDate;
     }
 
+
+/**
+ * Sets the planned end date of the project.
+ *
+ * @param plannedEndDate a {@code Calendar} object representing the planned end date of the project
+ */
      public void setPlannedEndDate(Calendar plannedEndDate) {
         this.plannedEndDate = plannedEndDate;
     }

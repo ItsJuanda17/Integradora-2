@@ -11,6 +11,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
+import java.text.ParseException;
 
 public class ControllerPro {
     public static final int SIZE_PROJECTS = 10;
@@ -86,7 +87,7 @@ public class ControllerPro {
  * @return the converted Calendar object
  */
 
-    public Calendar dateCalendar(String date) {
+    public Calendar dateCalendar(String date) throws ParseException{
         LocalDate localDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         ZonedDateTime zonedDateTime = localDate.atStartOfDay(ZoneId.systemDefault());
         Calendar calendar = GregorianCalendar.from(zonedDateTime);

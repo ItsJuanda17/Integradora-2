@@ -1,23 +1,35 @@
 package ui;
 
-
-
 import model.ControllerPro;
 import java.util.Scanner;
 import java.util.Calendar;
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+/**
+ * The Main class provides the main menu for the user interface of the program.
+ */
 public class Main {
 
     private Scanner reader;
     private ControllerPro controller;
-    public static final int SIZE_MONTHS = 10;
+    public static final int SIZE_MONTHS = 7;
 
+
+/**
+     * Constructs a Main object with a new Scanner for user input and a new ControllerPro object for managing program data.
+     */
     public Main() {
         reader = new Scanner(System.in);
         controller = new ControllerPro();
     }
 
-    public static void main(String[] args) {
+/**
+     * The main method of the program. Creates a new Main object and presents the main menu to the user.
+     *
+     * @param args Command line arguments (unused)
+     * @throws ParseException if an error occurs while parsing user input
+     */
+    public static void main(String[] args)throws ParseException {
         Main view = new Main();
         int option = 0;
 
@@ -51,7 +63,13 @@ public class Main {
         } while (option != 0);
     }
 
-    public void menu() {
+
+ /**
+     * Displays the main menu to the user.
+     *
+     * @throws ParseException if an error occurs while parsing user input
+     */
+    public void menu() throws ParseException {
         System.out.println("0. Exit");
         System.out.println("1. Create project");
         System.out.println("2. Complete project stage");
@@ -60,7 +78,14 @@ public class Main {
         System.out.println("5. Publish capsule");
     }
 
-    public void createProject() {
+
+/**
+ * Allows the user to create a new project with the following parameters: projectName, startDate, endDate,
+ * budget, clientManagerName, clientManagerPhone, managerName, managerCellPhone, and monthsStage.
+ * 
+ * @throws ParseException if there is an error in the date format
+ */
+    public void createProject() throws ParseException {
         String projectName;
         Calendar startDate;
         Calendar endDate;
@@ -103,7 +128,7 @@ public class Main {
         monthsStage = new int[SIZE_MONTHS];
 
         System.out.println("Select the months of the stages: (1.init , 2. analysis , 3.execute , 4. closure , 5.monitoring , 6.control)");
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 7; i++) {
             System.out.println("months for the "+(i)+ " stage.");
             monthsStage[i] = reader.nextInt();
         }
@@ -116,48 +141,119 @@ public class Main {
     }
 
  
- 
-    public void completeProjectStage() {
-       
-    }
+ /**
+ * Allows the user to complete a project stage with the following parameters: projectN and stageReal.
+ * 
+ * @throws ParseException if there is an error in the date format
+ */
+    public void completeProjectStage() throws ParseException {
+   
     
+    System.out.println("Type the number of the proyect : ");
+    int projectN = reader.nextInt();
+    
+    System.out.println("Type the real date on wich the new stage begins , in format date (dd-MM-yyyy)"); 
+    String startStageN = reader.next();
+    Calendar stageReal = null;
+    try {
+        stageReal = controller.dateCalendar(startStageN);
+    } catch (ParseException e) {
+        System.out.println("Invalid date format. Please enter the date in the format dd-MM-yyyy");
+        return; // Terminates the method prematurely
+    }
+
+    Calendar aux = controller.finishStage(projectN, stageReal);
+    System.out.println("The Stage " + controller.getProject(projectN).getCounterStages() + "has been created.");
+    String endStageN = new SimpleDateFormat("dd-MM-yyyy").format(aux.getTime());
+    System.out.println("the stage will end in " + endStageN );
+}
 
 
-/
+/**
+
+This method registers a capsule for a project with the given information.
+*/
+
     public void registerCapsule() {
 
-        String situationDescription;
-        int capsuleType;
-        String authorName;
-        String authorPosition;
-        String lessonLearned;
-        int consultProjet;
+        System.out.println("Type the name of the author capsule");
+        String authorName= reader.nextLine();
+        System.out.println("Type the status of the autor");
+        String authorPosition= reader.nextLine();
+        System.out.println("Select the type of the capsule (0. tecnic , 1. management , 2. domain . 3. experiences)");
+        int capsuleType=reader.nextInt();
+        System.out.println("type the number of the project");
+        int findProject = reader.nextInt();
 
-        System.out.println("Type the numbreof the proyect");
+        String lessonLearned= "";
+        String situationDescription= "";
 
-        consultProjet=reader.nextInt();
+        do{
+            
+        System.out.println("write the lesson learned (Ejemplo #Pruebas Funcionales#)");
+         lessonLearned=reader.nextLine();
+        }while(!lessonLearned.matches("(?<=#)(\\w+)(?=#)"));
 
-        System.out.println("Enter the type of the capsule , there are 4 types os capsules (1.tecnic , 2.management , 3.dominion , 4. experience)");
-         
-        capsuleType= reader.nextInt();
+        do {
+            System.out.println("write the situation description (Ejemplo #Pruebas Funcionales#) ");
+         situationDescription = reader.nextLine();
+        } while (!situationDescription.matches("(?<=#)(\\w+)(?=#)"));
 
-        System.out.println("Type the author name of the capsule");
+        controller.capsuleConsult(situationDescription, capsuleType, authorName , authorPosition, lessonLearned, findProject);
+        System.out.println("The capsule in " + controller.getProject(findProject).getStages(controller.getProject(findProject).getCounterStages()).getCounterCapsule() + "in the project" +controller.getCreatedProyects()+ "in the stage" + controller.getProject(findProject).getCounterStages() + "has been created"   );
 
-        authorName = reader.next();
-
-        System.out.println("Type the status on the industry ");
-        authorPosition= reader.nextLine();
-       
     }
- 
+
+/**
+ * Approves a capsule for a specific project and stage.
+ * Prompts the user for the project number, capsule number, and stage number.
+ * Sets the approved flag of the capsule to true.
+ */
     public void approveCapsule() {
+
+        System.out.println("Type the number of the proyect that you want to search: ");
+        int searchProyect = reader.nextInt();
+        
+        
+        System.out.println("Type the id of the capsule: ");
+        int capsuleNumber= reader.nextInt();
+
+        System.out.println("Select the stage: (1.init , 2. analysis , 3.execute , 4. closure , 5.monitoring , 6.control) ");
+        int stage = reader.nextInt();
+
+        controller.getProject(searchProyect).getStages(stage).getCapsules(capsuleNumber).setApproved(true);
+        System.out.println("The capsule has been approved");
+
+        
       
     }
 
+/**
+ * Publishes a capsule of a specific project and stage, and sets its status to published.
+ * Also generates a URL for the published capsule.
+ * 
+ * @param None
+ * @return void
+ */
     public void publishCapsule() {
 
- }
-*/
+        System.out.println("Type the capsule id: ");
+        int capsuleId = reader.nextInt();
+
+        System.out.println("Type the number of the proyect: ");
+        int findProject = reader.nextInt();
+
+        System.out.println("Select the stage: 1.init , 2. analysis , 3.execute , 4. closure , 5.monitoring , 6.control");
+        int stage= reader.nextInt();
+
+        controller.getProject(findProject).getStages(stage).getCapsules(capsuleId).isApproved();
+        System.out.println("the capsule is going to be published , wait for the URL");
+        String urlBase= "https://www.example.com/capsulas-de-conocimiento" + controller.getProject(findProject).getStages(stage).getCapsules(capsuleId).getUrl();
+        System.out.println("HTML CONVERTED: "+ urlBase);
+        controller.getProject(findProject).getStages(stage).getCapsules(capsuleId).setPublished(true);
+
+    }
+
 
 }
 

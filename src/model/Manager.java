@@ -1,34 +1,70 @@
+/**
+
+The Manager class represents a manager who has a name and a cellphone number.
+*/
+
 package model;
 
 public class Manager {
-    private String name;
+    private String managerName;
 
-    private String cellPhone;
+    private String managerCellPhone;
 
+/**
+ * Constructs a Manager object with the given name and cellphone number.
+ *
+ * @param name the name of the manager
+ * @param cellphone the cellphone number of the manager
+ */
+public Manager (String managerName , String managerCellPhone){
 
-public Manager (String name , String cellphone){
-
-    this.name=name;
-    this.cellPhone=cellPhone;
-
-}
-
-public String getName(){
-    return name;
-}
-
-public String setName(String name){
-
-    this.name = name;
+    this.managerName= managerName;
+    this.managerCellPhone=managerCellPhone;
 
 }
 
-public String getCellphone(){
-    return cellPhone;
+/**
+ * Returns the name of the manager.
+ *
+ * @return the name of the manager
+ */
+
+public String getManagerName(){
+    return managerName;
 }
 
-public String setCellphone(String cellPhone){
-    this.cellphone = cellPhone;
+
+/**
+ * Sets the name of the manager.
+ *
+ * @param name the new name of the manager
+ */
+
+public void setManagerName(String managerName){
+
+    this.managerName = managerName;
+
+}
+
+
+/**
+ * Returns the cellphone number of the manager.
+ *
+ * @return the cellphone number of the manager
+ */
+
+public String getManagerCellphone(){
+    return managerCellPhone;
+}
+
+/**
+ * Sets the cellphone number of the manager.
+ *
+ * @param cellphone the new cellphone number of the manager
+ */
+
+public void setManagerCellphone(String managerCellPhone){
+    this.managerCellPhone = managerCellPhone;
 }
 
 }

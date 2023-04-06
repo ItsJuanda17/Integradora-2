@@ -28,7 +28,7 @@ public Colaborator (String collaboratorStatus , String collaboratorName){
      * @return the status of the collaborator
      */
 public String getCollaboratorStatus(){
-    return collaboratorStatus
+    return collaboratorStatus;
 }
 
 
@@ -47,7 +47,7 @@ public void setCollaboratorStatus(String collaboratorStatus){
      * @return the name of the collaborator
      */
 public String getCollaboratorName(){
-    return collaboratorName
+    return collaboratorName;
 }
 
 

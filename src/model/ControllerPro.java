@@ -13,7 +13,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.GregorianCalendar;
 import java.text.ParseException;
 
+/**
+ * The `ControllerPro` class is responsible for managing projects and capsules.
+ */
 public class ControllerPro {
+   /**
+     * The size of the projects array.
+     */
+   
     public static final int SIZE_PROJECTS = 10;
     private Project[] projects;
     private int counterDates;
@@ -85,6 +92,7 @@ public class ControllerPro {
  * This method converts a string representation of a date in the format "dd-MM-yyyy" to a Calendar object.
  * @param date a string representation of the date to convert
  * @return the converted Calendar object
+ * @throws ParseException if the date string is not in the expected format
  */
 
     public Calendar dateCalendar(String date) throws ParseException{
@@ -136,6 +144,11 @@ public class ControllerPro {
         projects[findProject].createCapsuleOfStage(situationDescription, capsuleType, authorName, authorPosition, lessonLearned);
     }
 
+/**
+ * Returns the number of projects created by the user, excluding the currently active project.
+ *
+ * @return an integer value representing the number of created projects, excluding the currently active project.
+ */
     public int getCreatedProyects(){
         return createdProjects -1;
     }

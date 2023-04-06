@@ -12,6 +12,10 @@ public class Main {
 
     private Scanner reader;
     private ControllerPro controller;
+   
+   /**
+ * The number of months in a project duration.
+ */
     public static final int SIZE_MONTHS = 7;
 
 
@@ -232,8 +236,6 @@ This method registers a capsule for a project with the given information.
  * Publishes a capsule of a specific project and stage, and sets its status to published.
  * Also generates a URL for the published capsule.
  * 
- * @param None
- * @return void
  */
     public void publishCapsule() {
 

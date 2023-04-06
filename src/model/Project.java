@@ -1,5 +1,4 @@
 
-
 package model;
 
 import java.util.Calendar;
@@ -24,6 +23,15 @@ public class Project {
     private Calendar endDate;
     private Stage[] stages;
     private int[] monthsStage;
+   /**
+ * The number of stages in a project. A project has 6 stages: 
+ * 1. Initiation
+ * 2. Analysis
+ * 3. Execution
+ * 4. Closure
+ * 5. Monitoring
+ * 6. Control.
+ */
     public static final int SIZE_STAGES = 6;
     
 

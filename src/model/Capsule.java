@@ -10,7 +10,11 @@ import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Represents a knowledge capsule.
+ */
 
+    
 public class Capsule{
 //atributos
 private int id;

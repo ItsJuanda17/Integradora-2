@@ -7,6 +7,12 @@ package model;
 
 import java.util.Calendar;
 
+/**
+ * Represents a stage in a project. A stage has a planned start date, planned end date, 
+ * actual start date, actual end date, and an array of capsules. The capsules represent 
+ * knowledge capsules created during the stage. The Stage class also keeps track of whether 
+ * it is currently active or not.
+ */
 public class Stage{
 
     private boolean isActive;
@@ -15,6 +21,11 @@ public class Stage{
     private Calendar realStartDate;
     private Calendar realEndDate;
     private Capsule[] capsules;
+    
+    /**
+
+     The maximum number of capsules allowed in a stage.
+     */
     public static final int SIZE_CAPSULE = 50;
     private int counterCapsule ;
 
@@ -77,7 +88,11 @@ public class Stage{
     public boolean isActive(){
         return isActive;
     }
+/**
 
+Deactivates the stage.
+@param isActive the new status of the stage
+*/
     public void desactivate(boolean isActive){
         this.isActive = isActive;
     }
@@ -91,9 +106,10 @@ public class Stage{
 
 
 /**
- * Gets the array of capsules in the stage.
+ * Gets the capsule at the specified index in the array of capsules in the stage.
  *
- * @return the array of capsules
+ * @param capsule the index of the capsule to get
+ * @return the capsule at the specified index
  */
     public Capsule getCapsules(int capsule){
         return capsules [capsule];
@@ -133,7 +149,11 @@ public class Stage{
     public Calendar getRealEndDate(){
         return realEndDate;
     }
+/**
 
+Returns the counter of capsules.
+@return the number of capsules added to the stage
+*/
     public int getCounterCapsule(){
         return counterCapsule -1;
 

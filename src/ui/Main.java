@@ -49,16 +49,16 @@ public class Main {
                     view.createProject();
                     break;
                 case 2:
-                    System.out.println("Not implemented yet.");
+                    view.completeProjectStage();
                     break;
                 case 3:
-                    System.out.println("Not implemented yet:");
+                    view.registerCapsule();
                     break;
                 case 4:
-                    System.out.println("Not implemented yet.");
+                    view.approveCapsule();
                     break;
                 case 5:
-                    System.out.println("Not implemented yet.");
+                    view.publishCapsule();
                     break;
                 default:
                     System.out.println("Invalid option.");
@@ -103,19 +103,19 @@ public class Main {
 
 
         System.out.println("Type the name of the project:");
-        projectName = reader.nextLine();
+        projectName = reader.next();
 
         System.out.println("Type the name of the manager:");
-        managerName = reader.nextLine();
+        managerName = reader.next();
 
         System.out.println("Type the cellphone of the manager:");
-        managerCellPhone = reader.nextLine();
+        managerCellPhone = reader.next();
 
         System.out.println("Type the manager client name:");
-        clientManagerName = reader.nextLine();
+        clientManagerName = reader.next();
 
         System.out.println("Type the manager client phone:");
-        clientManagerPhone = reader.nextLine();
+        clientManagerPhone = reader.next();
 
         System.out.println("Type the budget of the project:");
         budget = reader.nextDouble();

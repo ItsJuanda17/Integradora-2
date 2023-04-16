@@ -55,11 +55,12 @@ public class Project {
         this.endDate = endDate;
         this.budget = budget;
         this.monthsStage = monthsStage;
+        this.stages = new Stage[SIZE_STAGES];
         initStage();
         counterStages=0;
         manager = new Manager(managerName, managerCellPhone);
         clientManager= new Manager(clientManagerName, clientManagerPhone);
-        stages = new Stage[SIZE_STAGES];
+        
    
 
     }

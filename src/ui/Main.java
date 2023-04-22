@@ -106,7 +106,8 @@ public class Main {
         projectName = reader.next();
 
         System.out.println("Type the name of the manager:");
-        managerName = reader.next();
+        reader.nextLine();
+        managerName = reader.nextLine();
 
         System.out.println("Type the cellphone of the manager:");
         managerCellPhone = reader.next();
@@ -132,7 +133,7 @@ public class Main {
         monthsStage = new int[SIZE_MONTHS];
 
         System.out.println("Select the months of the stages: (1.init , 2. analysis , 3.execute , 4. closure , 5.monitoring , 6.control)");
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < 6; i++) {
             System.out.println("months for the "+(i)+ " stage.");
             monthsStage[i] = reader.nextInt();
         }
@@ -140,7 +141,7 @@ public class Main {
 
         controller.createProject(projectName, startDate, endDate, budget, clientManagerName, clientManagerPhone, managerName , managerCellPhone, monthsStage);
         System.out.println("The proyect has been successfully created ");
-        System.out.println("The stage " + controller.getProject(controller.getCreatedProyects()).getCounterStages()+ "were created successfully");
+        System.out.println("The stage " + controller.getProject(controller.getCreatedProyects()).getCounterStages() + " swere created successfully");
 
     }
 
@@ -254,6 +255,26 @@ This method registers a capsule for a project with the given information.
         System.out.println("HTML CONVERTED: "+ urlBase);
         controller.getProject(findProject).getStages(stage).getCapsules(capsuleId).setPublished(true);
 
+    }
+
+    public void projectWithMaxCapsules() {
+        int maxCapsules = 0;
+        String projectName = "";
+        for (int i = 0; i < 10; i++) {
+            int projectCapsules = 0;
+            for (int j = 0; j < 6; j++) {
+                for (int k = 0; k < 50; k++) {
+                    if (controller.getProject(i).getStages(j).getCapsules(k).getCapsuleType() != -1) {
+                        projectCapsules++;
+                    }
+                }
+            }
+            if (projectCapsules > maxCapsules) {
+                maxCapsules = projectCapsules;
+                projectName = controller.getProject(i).getProjectName();
+            }
+        }
+        System.out.println("The project " + projectName + " has the greatest number of capsules with " + maxCapsules + " capsules.");
     }
 
 
